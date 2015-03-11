@@ -1,0 +1,4 @@
+﻿# -*- coding: UTF-8 -*-
+# requirements/common.txt 储存的是所有环境中都会用到的通用依赖库
+Django==1.7.5
+bootstrap-admin==0.3.4

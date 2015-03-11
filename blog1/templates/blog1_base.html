@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" href="{{STATIC_URL}}img/favicon.ico">
+    <title>{% block title %}Insert title here{% endblock %}</title>
+	{% block extrahead %}{% endblock %}
+    <!-- Bootstrap -->
+    <link href="{{STATIC_URL}}css/bootstrap.css" rel="stylesheet">
+    <link href="{{STATIC_URL}}css/blog.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="{{STATIC_URL}}js/html5shiv.min.js"></script>
+      <script src="{{STATIC_URL}}js/respond.min.js"></script>
+    <![endif]-->
+    
+    
+    
+  </head>
+  
+  <body>
+  	<div class="blog-masthead">
+      <div class="container">
+        <nav class="blog-nav">
+          <a class="blog-nav-item" href="{% url 'index' %}">Home</a>
+          <a class="blog-nav-item" href="{% url 'blogs' %}">Blog</a>
+          <a class="blog-nav-item" href="{% url 'about' %}">About</a>
+        </nav>
+      </div>
+    </div>
+    
+    
+    <div class="container">
+
+      <div class="blog-header">
+        <h1 class="blog-title">My Blog</h1>
+        <p class="lead blog-description">The official example template of creating a blog with Bootstrap.</p>
+      </div>
+      
+      <div class="row">
+      	<div class="col-sm-8 blog-main">
+      		{% block blog_main %}{% endblock %}
+      	</div><!-- /.blog-main -->
+      	
+      	<div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+          <div class="sidebar-module sidebar-module-inset">
+            <h4>About</h4>
+            <p>About: </p>
+          </div>
+          <div class="sidebar-module">
+            <h4>Categories</h4>
+            <ol class="list-unstyled">
+              <li><a href="#">March 2014</a></li>
+            </ol>
+          </div>
+          <div class="sidebar-module">
+            <h4>Elsewhere</h4>
+            <ol class="list-unstyled">
+              <li><a href="#">GitHub</a></li>
+            </ol>
+          </div>
+        </div><!-- /.blog-sidebar -->
+
+      </div><!-- /.row -->
+      
+    </div><!-- /.container -->
+    
+    <footer class="blog-footer">
+      <p>blog-footer </p>
+      <p>
+        <a href="#">Back to top</a>
+      </p>
+    </footer>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="{{STATIC_URL}}js/jquery-1.11.2.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="{{STATIC_URL}}js/bootstrap.js"></script>
+    
+    <!-- <script src="{{STATIC_URL}}js/docs.min.js"></script> -->
+    <script type="text/javascript">
+    	$(document).ready(function(){
+        	$(".blog-nav a").each(function(){
+            	$this = $(this);
+            	if($this[0].getAttribute('href')==String(window.location.pathname)){
+                	$this.addClass("active");
+            	}
+        	});
+    	});
+	</script>
+    
+  </body>
+</html>

@@ -1,0 +1,27 @@
+{# templates/blog1/hello.html #}
+{# 将 app_name 替换为对应的 app_name #}
+{% extends "blog1_base.html" %}
+{% load pagination_tags %}
+
+{% block title %}Blog_blogs{% endblock %}
+{% block extrahead %}{% endblock %}
+
+{% block blog_main %}
+
+		{% autopaginate blogs_list 2 %}    
+
+		{% for blogs in blogs_list%}
+        <div class="blog-post">
+            <h2 class="blog-post-title"><a href="{% url 'detail' blogs.id %}">{{blogs.title}}</a></h2>
+            <p class="blog-post-meta">{{blogs.created_time}}    By:{{blogs.author}}</p>
+
+            <p>{{blogs.description}}</p>
+        </div><!-- /.blog-post -->
+          
+        {% empty %}
+        empty
+        {% endfor%}
+		<hr>
+        {% paginate %}
+
+{% endblock blog_main%}
