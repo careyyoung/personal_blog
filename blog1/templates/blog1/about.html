@@ -4,6 +4,17 @@
 
 {% block title %}Blog_about{% endblock %}
 
-{% block content %}
+{% block blog_main %}
+<div class="blog-post">
+	<div>
+		<div><strong>留言</strong></div>
+	</div>
+	<form action="{% url 'message-detail' 2%}" method="POST"> 
+			名称：<input type="text" name="nick_name"></br>
+			邮箱：<input type="text" name="email"></br>
+			内容：<input type="text" name="content"></br>
+			<input type="submit" value="Submit" />
+	</form>
+</div>
 
-{% endblock content%}
+{% endblock blog_main%}

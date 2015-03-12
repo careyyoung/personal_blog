@@ -1,7 +1,7 @@
 {# templates/blog1/hello.html #}
 {# 将 app_name 替换为对应的 app_name #}
 {% extends "blog1_base.html" %}
-
+{% load bookmark_tags %}
 {% block title %}Blog_blogs{% endblock %}
 
 {% block blog_main %}
@@ -12,17 +12,49 @@
 
             <p>{{blog.description}}</p>
             <hr>
-            <p>{{blog.content}}</p>
+            <p id="content">{{blog.content|truncate_chars:2}}</p>
           </div><!-- /.blog-post -->
           
           <hr>
-
-
+          <input id="button_test" type="button" value="查看更多">
+          <div id="div-test"></div>
+          <hr>
+          
           <nav>
             <ul class="pager">
               <li><a href="#">Previous</a></li>
               <li><a href="#">Next</a></li>
+              
             </ul>
           </nav>
 
 {% endblock blog_main%}
+
+{% block extrascript %}
+	
+	<script type="text/javascript">
+	$(function(){
+		// 获取json，并添加到页面上
+		$("#button_test").click(function(){
+			$.ajax({
+			    type:'GET',
+			    url:'{% url 'blog-list' %}',
+			    dataType:'json',
+			    success:function(data)
+			        {
+			    		var data = data;
+			    		for(var i=0;i<data.results.length;i++){
+			    			$("#div-test").append(data.results[i].id+"</br>");
+			    		}
+			        },
+			    error:function(data)
+			    {
+			        alert('error'); 
+			    }
+			});
+		});
+	})
+	
+	</script>
+	
+{% endblock extrascript%}

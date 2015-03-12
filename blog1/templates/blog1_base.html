@@ -78,6 +78,8 @@
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="{{STATIC_URL}}js/jquery-1.11.2.js"></script>
+    <!-- django ajax post -->
+    <script src="{{STATIC_URL}}js/Django-ajax-post.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="{{STATIC_URL}}js/bootstrap.js"></script>
     
@@ -92,6 +94,6 @@
         	});
     	});
 	</script>
-    
+    {% block extrascript %}{% endblock %}
   </body>
 </html>

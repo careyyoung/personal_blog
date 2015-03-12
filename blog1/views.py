@@ -1,8 +1,9 @@
 # -*- coding: UTF-8 -*-
 from django.shortcuts import render
 from django.http import Http404
-
-from blog1.models import Blog
+from rest_framework import viewsets
+from blog1.models import Blog, Message
+from blog1.serializers import BlogSerializer, MessageSerializer
 
 # Create your views here.
 
@@ -35,9 +36,19 @@ def about(request):
     return render(request, 'blog1/about.html')
 
 
+class BlogViewSet(viewsets.ModelViewSet):
+    """
+            允许查看和编辑Blog 的 API endpoint
+    """
+    queryset = Blog.objects.all()
+    serializer_class = BlogSerializer
 
-
-
+class MessageViewSet(viewsets.ModelViewSet):
+    """
+            允许查看和编辑 Message 的 API endpoint
+    """
+    queryset = Message.objects.all()
+    serializer_class = MessageSerializer
 
 
 
