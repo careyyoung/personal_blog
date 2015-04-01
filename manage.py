@@ -17,3 +17,4 @@ if __name__ == "__main__":
 #python manage.py migrate  --settings=personal_blog.settings.dev
 #python manage.py makemigratioins  --settings=personal_blog.settings.dev
 #python manage.py sqlmigrate  (migration) --settings=personal_blog.settings.dev
+#python manage.py runserver 9999 --settings=personal_blog.settings.dev
